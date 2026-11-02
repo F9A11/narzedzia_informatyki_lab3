@@ -92,6 +92,7 @@ class ApartmentSettlement(BaseModel):
     remaining_amount_pln: float     # saldo (kwota pozostała do uregulowania)
 
 
+
 class TenantSettlement(BaseModel):
     """Rozliczenie konkretnego najemcy za dany miesiąc/rok."""
 
