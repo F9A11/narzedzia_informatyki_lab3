@@ -4,7 +4,7 @@ from typing import Dict, List
 import json
 
 class ApartmentSettlement(BaseModel):
-    apartment: str              # Identyfikator (klucz) mieszkania, którego dotyczy rozliczenie
+    apart: str              # Identyfikator (klucz) mieszkania, którego dotyczy rozliczenie
     year: int                   # Rok, którego dotyczy rozliczenie
     month: int                  # Miesiąc, którego dotyczy rozliczenie 
     total_bills_pln: float      # Suma rachunków za media w danym miesiącu
