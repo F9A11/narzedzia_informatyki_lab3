@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 from typing import Dict, List
-
 import json
+
 
 class ApartmentSettlement(BaseModel):
     apart: str              # Identyfikator (klucz) mieszkania, którego dotyczy rozliczenie
@@ -11,7 +11,6 @@ class ApartmentSettlement(BaseModel):
     total_rents_pln: float      # Suma czynszów w danym miesiącu
     remaining_amount_pln: float # Kwota pozostała do uregulowania (saldo rozliczenia)
 
-    
 
 class Parameters(BaseModel):
     apartments_json_path: str = 'data/apartments.json'
@@ -109,6 +108,7 @@ class Manager:
         self.transfers = Transfer.from_json_file(self.parameters.transfers_json_path)
         self.bills = Bill.from_json_file(self.parameters.bills_json_path)
 
+
 class TenantSettlement(BaseModel):
     # rozliczenie dla konkretnego najemcy za dany miesiąc/rok
     tenant: str # nazwa najemcy
@@ -124,6 +124,9 @@ class TenantSettlement(BaseModel):
     def total_due_pln(self) -> float:
         # łączna kwota do zapłaty
         return self.rent_pln + self.bills_pln
+
+
+
 
 if __name__ == '__main__':
     parameters = Parameters()
@@ -143,3 +146,4 @@ if __name__ == '__main__':
         for transfer in manager.transfers:
             if transfer.tenant == tenant.name:
                 print('  ', transfer.amount_pln, transfer.date, transfer.settlement_year, transfer.settlement_month)
+                
