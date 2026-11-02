@@ -3,6 +3,15 @@ from typing import Dict, List
 
 import json
 
+class ApartmentSettlement(BaseModel):
+    apartment: str              # Identyfikator (klucz) mieszkania, którego dotyczy rozliczenie
+    year: int                   # Rok, którego dotyczy rozliczenie
+    month: int                  # Miesiąc, którego dotyczy rozliczenie 
+    total_bills_pln: float      # Suma rachunków za media w danym miesiącu
+    total_rents_pln: float      # Suma czynszów w danym miesiącu
+    remaining_amount_pln: float # Kwota pozostała do uregulowania (saldo rozliczenia)
+
+    
 
 class Parameters(BaseModel):
     apartments_json_path: str = 'data/apartments.json'
